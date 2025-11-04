@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------
+   Global styles
+----------------------------- */
+html,
+body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply bg-base-100 text-base-content;
+}
+
+/* Limit content width (for better reading layout) */
+:root {
+  --content-max-width: 900px;
+}
+
+.container {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+}
+
+/* Responsive width for large screens */
+@media (min-width: 768px) {
+  :root {
+    --content-max-width: 1100px;
+  }
+}
+
+/* ----------------------------
+   Card & Surface styling
+----------------------------- */
+.card-surface {
+  @apply bg-base-200 border border-base-300 rounded-xl shadow-sm hover:shadow-md transition;
+}
+
+/* ----------------------------
+   Typography
+----------------------------- */
+.h1 {
+  @apply text-3xl font-bold tracking-tight;
+}
+.h2 {
+  @apply text-2xl font-semibold;
+}
+
+/* ----------------------------
+   Buttons
+----------------------------- */
+.btn-primary {
+  @apply bg-primary text-primary-content border-none font-medium rounded-lg 
+         hover:bg-primary/90 hover:shadow-[0_0_10px_rgba(37,99,235,0.4)]
+         active:scale-[0.98] transition-all duration-200;
+}
+
+/* ----------------------------
+   Tag badges (e.g., categories)
+----------------------------- */
+.badge-tag {
+  @apply inline-block text-sm px-3 py-1 rounded-full 
+         bg-base-300 text-base-content/70 border border-base-300;
+}
+
+/* ----------------------------
+   Post image
+----------------------------- */
+.post-image {
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+/* ----------------------------
+   Article typography (blog detail page)
+----------------------------- */
+.article-content {
+  @apply prose prose-base max-w-none 
+         prose-headings:text-base-content 
+         prose-p:text-base-content/80 
+         prose-a:text-primary hover:prose-a:text-primary/80 
+         prose-strong:text-base-content 
+         prose-blockquote:border-l-primary/40 prose-blockquote:text-base-content/70;
+}
