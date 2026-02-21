@@ -76,7 +76,7 @@ export async function createPost(req, res) {
     tags = tags.map((t) => t.trim().replace(/^#/, "")).filter(Boolean);
 
     // multer attaches file info to req.file
-    const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
+    const imagePath = req.file ? req.file.path : "";
 
     const newPost = new Post({
       title,
@@ -144,7 +144,7 @@ export async function updatePost(req, res) {
         : [],
     };
 
-    if (req.file) updatedData.image = `/uploads/${req.file.filename}`;
+    if (req.file) updatedData.image = req.file.path;
 
     const updatedPost = await Post.findByIdAndUpdate(
       req.params.id,

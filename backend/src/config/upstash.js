@@ -1,14 +1,9 @@
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
+import { rateLimit } from "express-rate-limit";
 
-import dotenv from "dotenv";
-
-dotenv.config();
-
-// create a ratelimiter that allows 100 requests per minute
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(50, "20 s"),
+const ratelimit = rateLimit({
+  windowMs: 20 * 1000,
+  limit: 50,
+  message: { message: "Too many requests, please try again later" },
 });
 
 export default ratelimit;
