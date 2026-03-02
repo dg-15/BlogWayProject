@@ -111,6 +111,12 @@ const LoginPage = () => {
             </Link>
           </p>
         </form>
+        {/* Test Credentials */}
+        <div className="mt-6 p-3 bg-blue-50 border border-blue-200 rounded-lg text-center">
+          <p className="text-xs text-gray-500 mb-1">🧪 Test Credentials</p>
+          <p className="text-xs text-blue-600">Email: test@gmail.com</p>
+          <p className="text-xs text-blue-600">Password: test123</p>
+        </div>
       </div>
 
       {/* Footer text */}
