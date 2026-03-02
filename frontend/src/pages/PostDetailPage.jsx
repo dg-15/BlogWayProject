@@ -32,17 +32,7 @@ const PostDetailPage = () => {
         setTitle(res.data.title || "");
         setContent(res.data.content || "");
         setTags(res.data.tags?.join(", ") || "");
-        setPreview(
-          res.data.image
-            ? res.data.image.startsWith("http")
-              ? res.data.image
-              : `http://localhost:5002${
-                  res.data.image.startsWith("/")
-                    ? res.data.image
-                    : `/${res.data.image}`
-                }`
-            : null
-        );
+        setPreview(res.data.image || null);
       } catch (err) {
         console.error("Error fetching post:", err);
         toast.error("Failed to load post details");
@@ -54,7 +44,12 @@ const PostDetailPage = () => {
   }, [id]);
 
   if (loading)
-    return <p className="text-center py-10 text-gray-600">Loading...</p>;
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-blue-50/40 to-white">
+        <Navbar />
+        <p className="text-center py-10 text-gray-600">Loading...</p>
+      </div>
+    );
   if (!post)
     return <p className="text-center py-10 text-red-500">Post not found.</p>;
 
