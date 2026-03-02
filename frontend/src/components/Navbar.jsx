@@ -10,7 +10,7 @@ import api from "../lib/axios";
 //import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { user, logout, setUser } = useAuth();
+  const { currentUser: user, logout } = useAuth();
   const [profile, setProfile] = useState(user);
 
   // ✅ Fetch profile once to ensure correct data (like in ProfilePage)
@@ -25,7 +25,7 @@ const Navbar = () => {
         });
 
         setProfile(res.data);
-        setUser(res.data); // sync with context
+        // setUser(res.data); // sync with context
       } catch (err) {
         console.error("Error fetching navbar profile:", err);
       }
